@@ -19,4 +19,5 @@ function custom_max_donation_message( $translations, $text, $domain ){
 		$translations = __( 'Please go <a href="' . site_url( '/donations/major-gifts/', 'https' ) . '">here</a> for instructions on donating more than', 'give' );
 	}
 	return $translations;
-}.
+}
+add_filter( 'gettext', 'custom_max_donation_message', 10, 3 );
