@@ -12,4 +12,11 @@
  * @package         Doxawells_Extensions
  */
 
-// Your code starts here.
+// Your code starts here
+
+function custom_max_donation_message( $translations, $text, $domain ){
+	if ( $domain == 'give' && $text == 'The maximum custom donation amount for this form is' ) {
+		$translations = __( 'Please go <a href="' . site_url( '/donations/major-gifts/', 'https' ) . '">here</a> for instructions on donating more than', 'give' );
+	}
+	return $translations;
+}.
