@@ -21,3 +21,15 @@ function custom_max_donation_message( $translations, $text, $domain ){
 	return $translations;
 }
 add_filter( 'gettext', 'custom_max_donation_message', 10, 3 );
+
+/**
+ * Add extra classes to the <body> tag.
+ */
+add_filter( 'body_class', function( $classes ) {
+	global $wp;
+	$additional_classes = [];
+	$request_url = $wp->request;
+	if( stristr( $request_url, 'campaign' ) && ! is_admin() )
+		$additional_classes[] = 'campaign-template';
+	return array_merge( $classes, $additional_classes );
+} );
